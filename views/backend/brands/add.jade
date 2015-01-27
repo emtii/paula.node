@@ -1,0 +1,38 @@
+extends ../layout
+
+
+block content
+	img(src="images/paula-logo.png")
+	h1= "Paula Kinderwagen-Berater - BACKEND"
+	h2= "Neuen Kinderwagen hinzufügen"
+	
+	form(class="form-horizontal", name="addBrand", method="POST", action="/backend/brands/save")
+		fieldset
+			//- Form Name
+			legend Neue Marke hinzufügen
+		
+			//- Input
+			div(class="form-group")
+				label(class="col-md-8 control-label", for="inputBrandName") Name
+				div(class="col-md-4")
+					input(id="inputBrandName", name="inputBrandName", type="text", placeholder="Hartan", class="form-control input-md", required="")
+					span(class="help-block") Der Name der Marke
+			div(class="form-group")
+				label(class="col-md-8 control-label", for="inputBrandUrl") Link
+				div(class="col-md-4")
+					input(id="inputBrandUrl", name="inputBrandUrl", type="text", placeholder="http://www.hartan.de/", class="form-control input-md")
+					span(class="help-block") e.g. "http://www.hartan.de/"
+			div(class="form-group")
+				label(class="col-md-8 control-label", for="inputBrandDescription") Beschreibung
+				div(class="col-md-4")
+					textarea(class="form-control", id="inputBrandDescription", name="inputBrandDescription") Die Marke ...											
+			div(class="form-group")
+				label(class="col-md-8 control-label", for="BrandInputFileUrl") Logo Link
+				div(class="col-md-4")
+					input(id="BrandInputFileUrl", name="BrandInputFileUrl", type="text", placeholder="/img/brands/logo1.png", class="form-control input-md")
+					span(class="help-block") e.g. "/img/brands/logo1.png"
+			div(class="form-group")
+				label(class="col-md-8 control-label", for="btnSubmit") Speichern
+				div(class="col-md-8")
+				button(id="btnSubmit", name="btnSubmit", class="btn btn-primary") Speichern
+				button(id="btnReset", name="btnReset", class="btn btn-inverse") Zurücksetzen	

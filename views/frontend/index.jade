@@ -1,0 +1,150 @@
+extends ../layout
+
+
+block header
+	include header.jade
+
+block content
+
+	//- Navigation
+	nav(class="navbar navbar-default navbar-fixed-top")
+		div(class="container")
+
+			//- Brand and toggle get grouped for better mobile display
+			div(class="navbar-header page-scroll")
+				button(type="button", class="navbar-toggle", data-toggle="collapse", data-target="#bs-example-navbar-collapse-1")
+				span(class="sr-only")
+				span(class="icon-bar")
+				span(class="icon-bar")
+				span(class="icon-bar")
+				a(class="navbar-brand", href="#page-top")
+
+			//- Collect the nav links, forms, and other content for toggling
+			div(class="collapse navbar-collapse", id="bs-example-navbar-collapse-1")
+				ul(class="nav navbar-nav navbar-right")
+					li(class="hidden"): a(href="#page-top")
+					li(class="page-scroll"): a(href="#start") Start
+					li(class="page-scroll"): a(href="#portfolio") Finder
+					li(class="page-scroll"): a(href="#about") Warum
+
+	//- Header
+	header(id="start")
+		div(class="container")
+			div(class="row")
+				div(class="col-lg-12")
+					img(class="img-responsive", src="img/paula-logo.png", alt="Kinderwagen Berater Paula")
+					div(class="intro-text")
+						span(class="name") Paula
+						hr(class="star-light")
+						span(class="skills") Kinderwagen-Berater, -Finder & Nerd-Fakten
+
+	//- Finder Grid Section
+	section(id="portfolio")
+		div(class="container")
+			div(class="row")
+				div(class="col-lg-12 text-center")
+					h2 Finder
+					hr(class="star-primary")
+				legend(class="text-center") Geben Sie hier Ihre Suchoptionen ein, um den passenden Kinderwagen zu finden!
+				div(class="row")
+					div(class="col-sm-4")
+						label(class="control-label") Hersteller
+						select(multiple="multiple", class="form-control")
+
+							//- iterate through paulaBrands and add Options to Select
+							each brand, i in paulaBrands
+								option(value="#{brand._id}") #{brand.name}
+					div(class="col-sm-8")
+						label(class="control-label") Preis
+							div(id="slider")
+							
+							//- Includes Price Slider
+							include slider.jade
+							
+				div(class="row voffset20")
+					div(class="col-sm-4")
+						div(class="controls")
+							label(class="control-label") Kinderwagen-Typ 
+							select(class="form-control")
+								option Klassischer Kinderwagen
+								option Buggy
+								option Sportwagen
+								option Zwillingswagen
+								option ...
+					div(class="col-sm-4")
+						div(class="controls")
+							label(class="control-label") Alter des Kindes 
+							select(class="form-control")
+								option 0-1
+								option 1-2
+								option 2-3
+								option 3-5
+					div(class="col-sm-4")
+						div(class="controls")
+							label(class="control-label") Farbe 
+							select(class="form-control")
+								option schwarz
+								option weiß
+								option grün
+								option blau
+								option ...
+				div(class="row voffset20")
+					div(class="col-sm-4")
+						div(class="controls")
+							label(class="control-label") Gesamtgewicht
+							select(class="form-control")
+								option 0-5 Kg
+								option 5 - 10 Kg
+								option 10 - 15 Kg
+								option 15 - 20 Kg
+								option ...
+					div(class="col-sm-4")
+						div(class="controls")
+							label(class="control-label") TÜV-Geprüft
+							select(class="form-control")
+								option Ja
+								option Nein
+								option Ist mir egal (Ich hoffe nicht!)
+					div(class="col-sm-4")
+						div(class="controls")
+							label(class="control-label") Anzahl Räder 
+							select(class="form-control")
+								option 3
+								option 4
+
+	//- About Section
+	section(class="success", id="about")
+		div(class="container")
+			div(class="row")
+				div(class="col-lg-12 text-center")
+					h2 Warum gibt es Paula
+					hr(class="star-light")
+			div(class="row")
+				div(class="col-lg-4 col-lg-offset-2")
+					p Paula wurde von mir entwickelt, um allen werdenden Eltern eine schnelle und einfache Möglichkeit zu bieten, einen passenden Kinderwagen für den Nachwuchs zu suchen. Stundenlange Beratungen in diversen 
+				div(class="col-lg-4")
+					p Fachgeschäften vor Ort und die unsäglich schlecht gepflegten Datenbanken des Webs haben mich dazu bewogen etwas eigenes zu erstellen. Dies ist das Ergebnis. Viel Spaß beim ausprobieren!
+
+	//- Footer
+	footer(class="text-center")
+		div(class="footer-above")
+			div(class="container")
+				div(class="row")
+					div(class="footer-col col-md-4")
+						h3 Wer?
+						p Emtii (<3 J.)
+					div(class="footer-col col-md-4")
+						h3 Wo noch?
+						ul(class="list-inline")
+							li: a(class="btn-social btn-outline", href="#"): i(class="fa fa-fw fa-facebook")
+							li: a(class="btn-social btn-outline", href="#"): i(class="fa fa-fw fa-google-plus")
+							li: a(class="btn-social btn-outline", href="#"): i(class="fa fa-fw fa-twitter")
+							li: a(class="btn-social btn-outline", href="#"): i(class="fa fa-fw fa-linkedin")
+							li: a(class="btn-social btn-outline", href="#"): i(class="fa fa-fw fa-dribbble")
+					div(class="footer-col col-md-4")
+						h3 Über Paula
+						p Paula ist zum Zeitpunkt dieser Entwicklung etwa 2 cm groß.
+		div(class="footer-below")
+			div(class="container")
+				div(class="row")
+					div(class="col-lg-12") Copyright &copy; Kinderwagen-Berater Paula 2015
